@@ -22,19 +22,20 @@ export const Header = () => {
     <div className={styles.root}>
       <Container maxWidth="lg">
         <div className={styles.inner}>
-          <Link className={styles.logo} to="/">
-            <div>Learn&Grow</div>
+          
+          <Link className={styles.logo} sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw', }} to="/">
+            <div>Головна</div>
           </Link>
-          <Link className={styles.logoAll} to="/all">
+          <Link className={styles.logoAll} sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} to="/all">
             <div>Всі статті</div>
           </Link>
           <div className={styles.buttons}>
             {isAuth ? (
               <>
                 <Link to="/add-post">
-                  <Button variant="contained">Написати статтю</Button>
+                  <Button className="Button" sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Написати</Button>
                 </Link>
-                <Button onClick={onClickLogout} variant="contained" color="error">
+                <Button onClick={onClickLogout} className="Button" sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained" color="error">
                   Вийти
                 </Button>
               </>
@@ -54,3 +55,4 @@ export const Header = () => {
     </div>
   );
 };
+
