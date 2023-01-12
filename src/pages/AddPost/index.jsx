@@ -19,7 +19,8 @@ export const AddPost = () => {
   const [isLoading, setLoading] = React.useState(false);
   const [text, setText] = React.useState('');
   const [title, setTitle] = React.useState('');
-  const [tags, setTags] = React.useState('');
+  const [subj, setSubj] = React.useState('');
+  const [grade, setGrade] = React.useState('');
   const [imageUrl, setImageUrl] = React.useState('');
   const inputFileRef = React.useRef(null);
   const isEditing = Boolean(id);
@@ -54,7 +55,8 @@ export const AddPost = () => {
       const fields = {
         title,
         imageUrl,
-        tags,
+        subj,
+        grade,
         text,
       };
 
@@ -78,8 +80,9 @@ export const AddPost = () => {
       .then(({ data }) => {
         setTitle(data.title);
         setText(data.text);
+        setGrade(data.grade);
         setImageUrl(data.imageUrl);
-        setTags(data.tags.join(','));
+        setSubj(data.subj.join(','));
       }).catch(err => {
         console.warn(err);
         alert('Помилка при отримання статті');
@@ -90,7 +93,7 @@ export const AddPost = () => {
   const options = React.useMemo(
     () => ({
       spellChecker: false,
-      maxHeight: '400px',
+      maxHeight: '250px',
       autofocus: true,
       placeholder: 'Напишіть текст...',
       status: false,
@@ -123,7 +126,8 @@ export const AddPost = () => {
           <Button variant="contained" color="error" onClick={onClickRemoveImage}>
             Видалити
           </Button>
-          <img className={styles.image} src={`${process.env.REACT_APP_API_URL}{imageUrl}`} alt="Uploaded" />
+          {/* <img className={styles.image} src={`http://localhost:4444${imageUrl}`} alt="Uploaded" /> */}
+          <img className={styles.image} src={`${process.env.REACT_APP_API_URL}${imageUrl}`} alt="Uploaded" />
         </>
         
       )}
@@ -139,12 +143,20 @@ export const AddPost = () => {
         fullWidth
       />
       <TextField 
-      value={tags}
-      onChange={(e) => setTags(e.target.value)}
-      classes={{ root: styles.tags }} 
-      variant="standard" 
-      placeholder="Теги" 
-      fullWidth />
+        value={subj}
+        onChange={(e) => setSubj(e.target.value)}
+        classes={{ root: styles.subj }} 
+        variant="standard" 
+        placeholder="Предмет" 
+        fullWidth />
+      <TextField 
+        classes={{ root: styles.title }}
+        variant="standard"
+        placeholder="Клас"
+        value={grade}
+        onChange={(e) => setGrade(e.target.value)}
+        fullWidth
+        />
       <SimpleMDE className={styles.editor} value={text} onChange={onChange} options={options} />
 
       <div className={styles.buttons}>

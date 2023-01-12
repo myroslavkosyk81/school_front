@@ -24,7 +24,7 @@ export const PostSkeleton = () => {
           </div>
           <div className={styles.skeletonInfo}>
             <Skeleton variant="text" width="80%" height={45} />
-            <div className={styles.skeletonTags}>
+            <div className={styles.skeletonSubj}>
               <Skeleton variant="text" width={40} height={30} />
               <Skeleton variant="text" width={40} height={30} />
               <Skeleton variant="text" width={40} height={30} />

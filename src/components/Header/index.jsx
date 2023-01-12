@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
+import logoFile from './LGheader_Grey2.png'
 import styles from './Header.module.scss';
 import Container from '@mui/material/Container';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,34 +20,49 @@ export const Header = () => {
   };
 
   return (
-    <div className={styles.root}>
+    
+    <div >
+      {/* <div className={styles.logofile}> */}
+      <div className={styles.logofilediv}>
+        <Link to="/"  >
+          <img src={logoFile} alt="Головна" className={styles.logofile} />
+        </Link>
+      </div>
+      
       <Container maxWidth="lg">
         <div className={styles.inner}>
+          <div className={styles.buttons}>
+            {/* <Link className={styles.logo} sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw', }} to="/"> */}
+          <Link to="/">
+            {/* <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Головна</Button> */}
+            <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '3vw' }}>Головна</Button>
+            {/* <div>Головна</div> */}
+          </Link>
+          {/* <Link className={styles.logoAll} sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} to="/all"> */}
+          <Link  to="/all">
+            <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '3vw' }} >Всі статті</Button>
+            {/* <div>Всі статті</div> */}
+          </Link>
+          </div>
           
-          <Link className={styles.logo} sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw', }} to="/">
-            <div>Головна</div>
-          </Link>
-          <Link className={styles.logoAll} sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} to="/all">
-            <div>Всі статті</div>
-          </Link>
           <div className={styles.buttons}>
             {isAuth ? (
               <>
                 <Link to="/add-post">
-                  <Button className="Button" sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Написати</Button>
+                  <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '3vw' }} >Написати</Button>
                 </Link>
-                <Button onClick={onClickLogout} className="Button" sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained" color="error">
+                <Button onClick={onClickLogout} sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '3vw' }}  color="error">
                   Вийти
                 </Button>
               </>
             ) : (
               <>
                 <Link to="/login">
-                  <Button variant="outlined">Увійти</Button>
+                  <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Увійти</Button>
                 </Link>
-                <Link to="/register">
-                  <Button variant="contained">Створити користувача</Button>
-                </Link>
+                {/* <Link to="/register">
+                  <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Створити користувача</Button>
+                </Link> */}
               </>
             )}
           </div>

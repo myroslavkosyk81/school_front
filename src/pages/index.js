@@ -1,7 +1,10 @@
 export { Home } from "./Home";
 export { All } from "./All";
+export { HomeGrade } from "./HomeGrade";
+export { HomeGrSb } from "./HomeGrSb";
 export { HomeF } from "./HomeF";
 export { FullPost } from "./FullPost";
 export { AddPost } from "./AddPost";
 export { Registration } from "./Registration";
 export { Login } from "./Login";
+export { Grade8 } from "./Grade8";

@@ -1,0 +1,44 @@
+// .root {
+//   background-color: #fff;
+//   padding: 10px 0;
+//   border-bottom: 1px solid #e0e0e0;
+//   margin-bottom: 30px;
+  
+// }
+
+// .inner {
+//   display: flex;
+//   justify-content: center;
+// }
+.grade {
+  // font-size: initial;
+  // font-weight: unset;
+  text-align: center;
+  font-family:"Helvetica", sans-serif;
+  font-size: 30px;
+  font-size: 2.5vw;
+  // font-family:"Helvetica", sans-serif;
+  
+  // font-size: 5vw;
+  background: #c5d7ee;
+  color: #7e3f3f;
+  // width: 200px;
+  // height: 40px;
+  margin-top: 20px;
+  position: relative;
+  // top: 40px;
+  padding: 1% 10px 1% 10px;
+  text-align: center;
+  // border-top: 3px solid #ababab;
+  // border-bottom: 3px solid #ababab;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.53);
+  -moz-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: 0px 0px 12px rgb(58 69 102 / 53%);
+}
+
+
+
+

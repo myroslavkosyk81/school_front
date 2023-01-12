@@ -1,16 +1,36 @@
 .root {
-  background-color: #fff;
-  padding: 10px 0;
+  // background-color: #006012;
+  padding: 0px 0;
   border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 30px;
-  
+  margin-bottom: 18px;
+  align-self: center;
+  position: relative;
+ 
 }
 
 .inner {
   display: flex;
   justify-content: center;
 }
-
+.logofilediv {
+  // all: initial;
+  // display: block;
+  // all: unset;
+  // margin: auto;
+  // background-color: #006012;
+}
+.logofile {
+  
+  // all: unset;
+  display: block;
+  
+  margin: auto;
+  position: relative;
+ 
+  width: 100px;
+  height: 100px;
+  
+}
 
 .logo {
   background-color: rgb(61, 34, 216);
@@ -51,6 +71,7 @@
 .buttons {
   button {
     margin-left: 10px;
+    color: #006012;
   }
 
   a {

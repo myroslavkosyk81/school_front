@@ -7,17 +7,33 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     const { data } = await axios.get('/posts');
     return data;
 });
-export const fetchPostsF = createAsyncThunk('tags/fetchPostsF', async (tagsN) => {
+export const fetchPostsF = createAsyncThunk('subj/fetchPostsF', async (subjN) => {
     
-    const { data } = await axios.get(`/tags/${tagsN}`);
-    console.log(tagsN)
+    const { data } = await axios.get(`/subj/${subjN}`);
+    // console.log(subjN)
+    return data;
+});
+    
+export const fetchPostsGr = createAsyncThunk('grade/fetchPostsGr', async ( params, ) => {
+    const { data } = await axios.get(`/grade/${params[0]}/${params[1]}`);
     return data;
 });
 
-export const fetchTags = createAsyncThunk('posts/fetchTags', async () => {
-    const { data } = await axios.get('/tags');
+export const fetchSubj = createAsyncThunk('posts/fetchSubj', async () => {
+    const { data } = await axios.get('/subj');
     return data;
 });
+export const fetchSubjGr = createAsyncThunk('grade/fetchSubjGr', async (gradeN) => {
+    const { data } = await axios.get(`/grade/${gradeN}`);
+    return data;
+});
+
+export const fetchGrade = createAsyncThunk('posts/fetchGrade', async () => {
+    const { data } = await axios.get('/grade');
+    return data;
+});
+
+
 export const fetchRemovePost = createAsyncThunk('posts/fetchRemovePost', async (id) => 
     axios.delete(`/posts/${id}`),
     
@@ -28,11 +44,19 @@ const initialState = {
         items: [],
         status: 'loading',
     },
-    tagsN: {
+    subjN: {
         items: [],
         status: 'loading',
     },
-    tags: {
+    grade: {
+        items: [],
+        status: 'loading',
+    },
+    gradeN: {
+        items: [],
+        status: 'loading',
+    },
+    subj: {
         items: [],
         status: 'loading',
     },
@@ -55,17 +79,29 @@ const postSlice = createSlice({
             state.posts.items = [];
             state.posts.status = 'error';
         },
-        [fetchTags.pending]: (state) => {
-            state.tags.items = [];
-            state.tags.status = 'loading';
+        [fetchSubj.pending]: (state) => {
+            state.subj.items = [];
+            state.subj.status = 'loading';
         },
-        [fetchTags.fulfilled]: (state, action) => {
-            state.tags.items = action.payload;
-            state.tags.status = 'loaded';
+        [fetchSubj.fulfilled]: (state, action) => {
+            state.subj.items = action.payload;
+            state.subj.status = 'loaded';
         },
-        [fetchTags.rejected]: (state) => {
-            state.tags.items = [];
-            state.tags.status = 'error';
+        [fetchSubj.rejected]: (state) => {
+            state.subj.items = [];
+            state.subj.status = 'error';
+        },
+        [fetchGrade.pending]: (state) => {
+            state.grade.items = [];
+            state.grade.status = 'loading';
+        },
+        [fetchGrade.fulfilled]: (state, action) => {
+            state.grade.items = action.payload;
+            state.grade.status = 'loaded';
+        },
+        [fetchGrade.rejected]: (state) => {
+            state.grade.items = [];
+            state.grade.status = 'error';
         },
 
 ///////////
@@ -80,6 +116,31 @@ const postSlice = createSlice({
         [fetchPostsF.rejected]: (state) => {
             state.posts.items = [];
             state.posts.status = 'error';
+        },
+        [fetchPostsGr.pending]: (state) => {
+            state.posts.items = [];
+            state.posts.status = 'loading';
+        },
+        [fetchPostsGr.fulfilled]: (state, action) => {
+            state.posts.items = action.payload;
+            state.posts.status = 'loaded';
+        },
+        [fetchPostsGr.rejected]: (state) => {
+            state.posts.items = [];
+            state.posts.status = 'error';
+        },
+      
+        [fetchSubjGr.pending]: (state) => {
+            state.subj.items = [];
+            state.subj.status = 'loading';
+        },
+        [fetchSubjGr.fulfilled]: (state, action) => {
+            state.subj.items = action.payload;
+            state.subj.status = 'loaded';
+        },
+        [fetchSubjGr.rejected]: (state) => {
+            state.subj.items = [];
+            state.subj.status = 'error';
         },
 
         //delete post

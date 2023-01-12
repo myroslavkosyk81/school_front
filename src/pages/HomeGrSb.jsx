@@ -5,25 +5,33 @@ import Tab from '@mui/material/Tab';
 import Grid from '@mui/material/Grid';
 
 import axios from '../axios';
-
+import { useParams  } from "react-router-dom";
 import { Post } from '../components/Post';
 import { SubjBlock } from '../components/SubjBlock';
 import { CommentsBlock } from '../components/CommentsBlock';
-import { fetchPosts, fetchSubj } from '../redux/slices/posts';
+import { fetchPostsF, fetchSubj, fetchPostsGr } from '../redux/slices/posts';
 
-export const All = () => {
+export const HomeGrSb = () => {
   const dispatch = useDispatch();
-  const { posts, subj, grade} = useSelector(state => state.posts);
-
+  const { posts, subj, grade, } = useSelector(state => state.posts);
   const isPostLoading = posts.status === 'loading';
   const isSubjLoading = subj.status === 'loading';
-console.log(posts)
-
+  
+  const { subjN } = useParams();
+  const { gradeN } = useParams();
+  
   React.useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchSubj());
-    
+    // dispatch(fetchPostsF(subjN));
+    // console.log(subjN);
+    // console.log(gradeN);
+
+    // dispatch(fetchPostsGr( subjN ));
+    // dispatch(fetchPostsGr( gradeN ));
+    dispatch(fetchPostsGr( [gradeN, subjN] ));
+    // dispatch(fetchSubj());
   }, [])
+
+
 
   return (
     <>
@@ -53,7 +61,7 @@ console.log(posts)
           ),
           )}
         </Grid>
-        {/* <Grid xs={4} item>
+        {/* <Grid xs={3} item>
           <SubjBlock items={subj.items} isLoading={isSubjLoading} />
           <CommentsBlock
             items={[

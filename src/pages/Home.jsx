@@ -6,27 +6,34 @@ import Grid from '@mui/material/Grid';
 
 import axios from '../axios';
 
+import {Header} from '../components/Header';
 import { Post } from '../components/Post';
-import { TagsBlock } from '../components/TagsBlock';
+import { SubjBlock } from '../components/SubjBlock';
+import { GradeBlock } from '../components/GradeBlock';
 import { CommentsBlock } from '../components/CommentsBlock';
-import { fetchPosts, fetchTags } from '../redux/slices/posts';
+import { fetchPosts, fetchSubj, fetchGrade } from '../redux/slices/posts';
+
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const { posts, tags} = useSelector(state => state.posts);
+  const { posts, subj, grade} = useSelector(state => state.posts);
 
   const isPostLoading = posts.status === 'loading';
-  const isTagsLoading = tags.status === 'loading';
-console.log(tags)
+  const isSubjLoading = subj.status === 'loading';
+  const isGradeLoading = grade.status === 'loading';
+// console.log(subj)
 
   React.useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchTags());
+    // dispatch(fetchPosts());
+    // dispatch(fetchSubj());
+    dispatch(fetchGrade());
     
   }, [])
 
   return (
     <>
+   
+      {/* <Header /> */}
       {/* <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
         <Tab label="Нові" />
         <Tab label="Популярні" />
@@ -39,12 +46,12 @@ console.log(tags)
             <Post
               id={obj._id}
               title={obj.title}
-              imageUrl={obj.imageUrl ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}` : ''}
+              imageUrl={obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ''}
               user={obj.user}
               createdAt={obj.createdAt}
               viewsCount={obj.viewsCount}
               commentsCount={3}
-              tags={obj.tags}
+              subj={obj.subj}
             
               isEditable
             />
@@ -52,7 +59,8 @@ console.log(tags)
           )}
         </Grid> */}
         <Grid xs={12} item>
-          <TagsBlock items={tags.items} isLoading={isTagsLoading} />
+          {/* <SubjBlock items={subj.items} isLoading={isSubjLoading} /> */}
+          <GradeBlock items={grade.items} isLoading={isGradeLoading} />
           {/* <CommentsBlock
             items={[
               {

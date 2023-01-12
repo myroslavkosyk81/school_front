@@ -17,13 +17,13 @@ export const Registration = () => {
       <div className={styles.avatar}>
         <Avatar sx={{ width: 100, height: 100 }} />
       </div>
-      <div>На даний час реєстрація обмежена. Зверніться будь ласка до адміністратора</div>
-      <TextField className={styles.field} label="Повне ім’я" fullWidth />
+      <div className={styles.title}>На даний час реєстрація обмежена, зверніться до адміністратора</div>
+      {/* <TextField className={styles.field} label="Повне ім’я" fullWidth />
       <TextField className={styles.field} label="E-Mail" fullWidth />
       <TextField className={styles.field} label="Пароль" fullWidth />
       <Button size="large" variant="contained" fullWidth>
         Зареєструватися
-      </Button>
+      </Button> */}
     </Paper>
   );
 };
