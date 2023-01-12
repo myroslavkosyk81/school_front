@@ -58,7 +58,8 @@ export const Header = () => {
             ) : (
               <>
                 <Link to="/login">
-                  <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Увійти</Button>
+                  {/* <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Увійти</Button> */}
+                  <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '3vw' }}>Увійти</Button>
                 </Link>
                 {/* <Link to="/register">
                   <Button sx={{lineHeight: 0.9, fontSize: '8px', fontSize: '2vw' }} variant="contained">Створити користувача</Button>
